@@ -1,17 +1,14 @@
 
-# Team Number – Project Title
+# CB9 – A Machine Learning Framework for Forest Fire Prediction in the Nallamala Forest Using NDVI and Synthetic Weather Data
 
 ## Team Info
-- 22471A05XX — **Name** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
+- 22471A05F5 — **GAIRUBOINA NAVEEN KUMAR** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
 _Work Done: xxxxxxxxxx_
 
-- 22471A05XX — **Name** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
+- 22471A05F2 — **DOGHIPARTI VENKATA SAI GIRISH** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
 _Work Done: xxxxxxxxxx_
 
-- 22471A05XX — **Name** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
-_Work Done: xxxxxxxxxx_
-
-- 22471A05XX — **Name** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
+- 22471A05I6 — **SANIKOMMU NIRUPAM REDDY** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
 _Work Done: xxxxxxxxxx_
 
 ---
