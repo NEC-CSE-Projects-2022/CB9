@@ -1,0 +1,187 @@
+
+        <!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default("Flask Project") }}</title>
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-light: #6a88f9;
+            --primary-dark: #3a56c7;
+            --secondary: #6c757d;
+            --accent: #0d6efd;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #198754;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --transition: all 0.3s ease;
+        }
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            width: 95%;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .logo {
+            height: 90px;
+            width: 90px;
+            border-radius: 18px;
+            background: white;
+            padding: 5px;
+            margin-right: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+        }
+
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+        }
+
+        .team-info {
+            font-size: 1.1rem;
+            margin-top: 12px;
+            color: var(--secondary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .team-info span {
+            margin-right: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid var(--primary);
+            width: 80%;
+            margin: 20px auto;
+            opacity: 0.3;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar li a:hover {
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary-dark);
+        }
+
+        .navbar li a.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+    main {
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        margin: 2rem auto;
+        padding: 2.5rem;
+        width: 95%;
+        min-height: 60vh;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .navbar {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo {
+            margin-bottom: 15px;
+        }
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+```
+
+</head>
+<body>
+    <header>
+    <img src="./static/images/logo.jpg" alt="Logo" class="logo">
+    <div class="header-content">
+            <div class="project-title">{{ title | default("A Machine Learning Framework for Forest Fire Prediction in the Nallamala Forest Using NDVI and Synthetic Weather Data") }}</div>
+        <div class="team-info">
+        <span><i class="fas fa-users"></i> Team: G. Naveen Kumar, D.V.S. Girish, S. Nirupam Reddy</span>
+        <span><i class="fas fa-user-graduate"></i> Guide: Dr. S. Siva Nageshwarao</span>
+        <span><i class="fas fa-user-tie"></i> Mentor: D. Venkata Reddy</span>
+      </div>
+        <hr>
+        <nav>
+            <ul class="navbar">
+                <li><a href="{{ url_for('index') }}" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('about') }}" class=""><i class="fas fa-info-circle"></i> About Project</a></li>
+                <li><a href="{{ url_for('predict') }}" class=""><i class="fas fa-fire"></i> Prediction</a></li>
+                <li><a href="{{ url_for('metrics') }}" class=""><i class="fas fa-chart-line"></i> Metrics</a></li>
+                <li><a href="{{ url_for('flowchart') }}" class=""><i class="fas fa-sitemap"></i> Flowchart</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+```
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+```
+
+</body>
+</html>

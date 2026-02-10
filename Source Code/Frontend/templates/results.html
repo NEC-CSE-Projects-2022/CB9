@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NallaFireNet - Model Results</title>
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-light: #6a88f9;
+            --primary-dark: #3a56c7;
+            --secondary: #6c757d;
+            --success: #198754;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --card-bg: rgba(255, 255, 255, 0.97);
+            --transition: all 0.3s ease;
+        }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: var(--dark);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .results-container {
+        width: 95%;
+        max-width: 1000px;
+        background: var(--card-bg);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        padding: 2.5rem;
+        margin: 2rem auto;
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--primary-dark);
+        font-size: 2.2rem;
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .accuracy-card {
+        background: linear-gradient(135deg, rgba(74,108,247,0.1) 0%, rgba(106,136,249,0.05) 100%);
+        border-left: 4px solid var(--primary-dark);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .accuracy-card h2 {
+        color: var(--primary-dark);
+        margin: 0 0 0.5rem 0;
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        color: var(--primary-dark);
+        margin-top: 2rem;
+        border-left: 4px solid var(--primary);
+        padding-left: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(74,108,247,0.05);
+    }
+
+    tr:hover {
+        background-color: rgba(74,108,247,0.1);
+    }
+
+    .classification-report {
+        background: #fff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        border-left: 4px solid var(--primary);
+        font-family: "Courier New", monospace;
+        white-space: pre-wrap;
+        overflow-x: auto;
+        margin-top: 1rem;
+    }
+
+    .no-results {
+        text-align: center;
+        background: rgba(231,76,60,0.1);
+        border-left: 4px solid var(--danger);
+        color: var(--danger);
+        padding: 1rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+    }
+
+    .btn {
+        padding: 0.9rem 2rem;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        transition: var(--transition);
+    }
+
+    .btn-home {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
+
+    .btn-predict {
+        background: linear-gradient(135deg, var(--success), #28a745);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .flash-messages {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .flash-message {
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-align: center;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .flash-message.success { background: var(--success); }
+    .flash-message.error { background: var(--danger); }
+    .flash-message.info { background: var(--primary-dark); }
+
+    @media (max-width: 768px) {
+        .results-container { padding: 1.5rem; }
+        h1 { font-size: 1.8rem; }
+        table th, table td { font-size: 0.9rem; }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Flash Messages -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+```
+<div class="results-container">
+    <h1>Model Results</h1>
+
+    {% if upload_success %}
+    <div class="flash-message success">✅ File uploaded successfully!</div>
+    {% endif %}
+
+    {# If a single-file prediction was made, show it here #}
+    {% if result %}
+    <div class="accuracy-card">
+        <h2>Prediction Result</h2>
+        <p style="font-size:1.1rem;margin:0.5rem 0;"><strong>Outcome:</strong> {{ result }}</p>
+        <p style="font-size:0.95rem;margin:0.2rem 0;color:var(--secondary)"><strong>Confidence:</strong> {{ probability }}</p>
+    </div>
+
+    {% if data_preview %}
+    <h2 class="section-title">Uploaded Data Preview</h2>
+    <table>
+        <tr>
+            {% for col in data_columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data_preview %}
+        <tr>
+            {% for col in data_columns %}
+                <td>{{ row[col] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+
+    {% elif results %}
+    <div class="accuracy-card">
+        <h2>Accuracy: {{ results.accuracy }}%</h2>
+        <p>The model achieved this accuracy based on your uploaded dataset and trained ensemble configuration.</p>
+    </div>
+
+    <h2 class="section-title">Prediction Summary</h2>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Predicted Count</th>
+        </tr>
+        <tr>
+            <td><b>Normal (BENIGN)</b></td>
+            <td>{{ results.correctly_predicted_normal }}</td>
+        </tr>
+        <tr>
+            <td><b>Fire / Malicious</b></td>
+            <td>{{ results.correctly_predicted_malicious }}</td>
+        </tr>
+    </table>
+
+    <h2 class="section-title">Classification Report</h2>
+    <div class="classification-report">{{ results.classification_report }}</div>
+
+    <h2 class="section-title">Confusion Matrix</h2>
+    <table>
+        {% for row in results.confusion_matrix %}
+            <tr>
+                {% for value in row %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <div class="no-results">No results to display. Please train or predict first.</div>
+    {% endif %}
+
+    <div class="button-container">
+        <button class="btn btn-predict" onclick="window.location.href='{{ url_for('predict') }}'">Try Again</button>
+        <button class="btn btn-home" onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const messages = document.querySelectorAll('.flash-message');
+        messages.forEach(msg => {
+            setTimeout(() => {
+                msg.style.opacity = '0';
+                msg.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => msg.remove(), 500);
+            }, 5000);
+        });
+    });
+</script>
+```
+
+</body>
+</html>

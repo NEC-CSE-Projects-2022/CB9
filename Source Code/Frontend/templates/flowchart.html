@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="project-container">
+    <h1 class="animated-title">Proposed System – NallaFireNet</h1>
+
+    <p class="system-description">
+        The <b>NallaFireNet</b> architecture is a modular, interpretable machine learning framework 
+        for <b>forest fire prediction</b> in the Nallamala Forest. It integrates satellite-based 
+        <b>NDVI imagery</b> with <b>synthetic meteorological data</b> (temperature, humidity, and solar radiation) 
+        to forecast fire occurrences in advance. The pipeline includes data preprocessing, lag-based 
+        feature engineering, <b>SMOTE balancing</b>, and a <b>stacked ensemble</b> of LightGBM, XGBoost, 
+        and Random Forest models. The final model outputs reliable early-warning signals for 
+        proactive forest management and wildfire mitigation.
+    </p>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/model_arc.png') }}" alt="NallaFireNet Model Architecture">
+        <p class="caption">Fig. 1 — Modular architecture of the proposed NallaFireNet framework.</p>
+    </div>
+</div>
+
+<style>
+  :root {
+      --primary: #4a6cf7;
+      --primary-light: #6a88f9;
+      --primary-dark: #3a56c7;
+      --secondary: #6c757d;
+      --accent: #0d6efd;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --transition: all 0.3s ease;
+  }
+
+  body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+  }
+
+  .project-container {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      width: 95%;
+      margin: 2rem auto;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+  }
+
+  .animated-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      animation: fadeSlideIn 1.2s ease-out forwards;
+  }
+
+  .system-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+      color: var(--secondary);
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      font-family: 'Open Sans', sans-serif;
+      animation: fadeSlideIn 1.5s ease-out forwards;
+  }
+
+  .image-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: zoomIn 1.5s ease-out forwards;
+  }
+
+  .image-container img {
+      max-width: 90%;
+      max-height: 75vh;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+  }
+
+  .image-container img:hover {
+      transform: scale(1.02);
+  }
+
+  .caption {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: var(--secondary);
+      font-style: italic;
+      text-align: center;
+  }
+
+  @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(-15px); }
+      100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes zoomIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+      .animated-title {
+          font-size: 1.5rem;
+      }
+
+      .system-description {
+          font-size: 1rem;
+          padding: 0 10px;
+      }
+
+      .image-container img {
+          max-width: 100%;
+      }
+  }
+</style>
+{% endblock %}

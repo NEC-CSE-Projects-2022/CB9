@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Main content styling */
+    .content-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Title Styling */
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        text-align: center;
+        margin: 1rem 0 2rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--primary);
+        position: relative;
+    }
+
+    h1:after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+
+    /* Paragraph Styling */
+    p {
+        text-align: justify;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--dark);
+        margin: 1.5rem 0;
+        padding: 0 1rem;
+    }
+
+    /* Feature cards */
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2.5rem 0;
+    }
+
+    .feature-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        border-left: 4px solid var(--primary);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card h3 {
+        font-family: 'Poppins', sans-serif;
+        color: var(--primary-dark);
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .feature-card h3 i {
+        color: var(--primary);
+    }
+
+    /* Call to action */
+    .cta {
+        text-align: center;
+        margin: 3rem 0;
+        padding: 2rem;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+        border-radius: 20px;
+        color: white;
+    }
+
+    .cta h2 {
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta .btn {
+        background: white;
+        color: var(--primary-dark);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: var(--transition);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+        
+        p {
+            padding: 0;
+            font-size: 1rem;
+        }
+        
+        .features {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="content-container">
+    <h1>Forest Fire Prediction in the Nallamala Forest</h1>
+    
+    <p>This project offers a machine learning-based
+methodology for early warning and prediction of forest fires
+in India’s ecologically rich Nallamala Forest region. Leveraging
+remotely sensed NDVI data to capture vegetation dynamics and
+health patterns and synthetically generated weather data from
+2012 to 2025, the research constructs a strong model to classify
+fire events. The pipeline combines MODIS HDF-format NDVI
+time series with historical temperature and humidity patterns,
+supplemented by engineered lag features. Ground-truth fire
+events are obtained from MODIS and VIIRS fire archive data
+sets. For class imbalance in fire event data,The Synthetic Minor-
+ity Oversampling Technique (SMOTE) was applied to balance
+the class distribution.The ultimate predictive model utilizes an
+ensemble of XGBoost and LightGBM classifiers within a voting
+approach, with strong potential for operational deployment in
+forest fire alert systems. This work emphasizes the need for a
+combination of remote sensing and ML methods for proactive
+forest management and climate resilience.
+I</p>
+    
+    <!-- <div class="features">
+        <div class="feature-card">
+            <h3><i class="fas fa-shield-alt"></i> Threat Detection</h3>
+            <p>It employs signature-based methods to match known attack patterns and anomaly-based detection to flag deviations from normal behavior, enabling it to detect both known and unknown threats.</p>
+        </div>
+        
+        <div class="feature-card">
+            <h3><i class="fas fa-bell"></i> Alert System</h3>
+            <p>Upon detecting an intrusion, NIDS generates alerts, allowing administrators to respond promptly to potential security incidents.</p>
+        </div>
+        
+        <div class="feature-card">
+            <h3><i class="fas fa-network-wired"></i> Network Coverage</h3>
+            <p>While it provides early threat detection, wide network coverage, and customizable rules, challenges like high false positives and resource demands can arise.</p>
+        </div>
+    </div> -->
+    
+    <!-- <p>NIDS is widely used in enterprises, government networks, and industrial systems to protect sensitive data and critical infrastructure, making it an indispensable component of modern cybersecurity strategies.</p> -->
+    
+    <div class="cta">
+        <h2>Ready to experience our Forest Fire detection system?</h2>
+        <a href="{{ url_for('predict') }}" class="btn">Try Prediction Now</a>
+    </div>
+</div>
+{% endblock %}

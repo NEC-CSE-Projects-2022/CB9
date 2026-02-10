@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics - NallaFireNet</title>
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-light: #6a88f9;
+            --primary-dark: #3a56c7;
+            --secondary: #6c757d;
+            --accent: #0d6efd;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #198754;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            width: 95%;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .logo {
+            height: 90px;
+            width: 90px;
+            border-radius: 18px;
+            background: white;
+            padding: 5px;
+            margin-right: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+        }
+
+        .header-content {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+        }
+
+        .team-info {
+            font-size: 1.1rem;
+            margin-top: 12px;
+            color: var(--secondary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .team-info span {
+            margin-right: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid var(--primary);
+            width: 80%;
+            margin: 20px auto;
+            opacity: 0.3;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar li a:hover {
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary-dark);
+        }
+
+        .navbar li a.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        main {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            padding: 2.5rem;
+            width: 95%;
+            min-height: 60vh;
+        }
+
+        .metrics-container {
+            padding: 20px;
+            color: #333;
+        }
+
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+            margin: 30px 0 20px 0;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background-color: rgba(74, 108, 247, 0.05);
+        }
+
+        table tr:hover {
+            background-color: rgba(74, 108, 247, 0.1);
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+<header>
+    <img src="/static/images/logo.jpg" alt="Logo" class="logo">
+    <div class="header-content">
+            <div class="project-title">{{ title | default("A Machine Learning Framework for Forest Fire Prediction in the Nallamala Forest Using NDVI and Synthetic Weather Data") }}</div>
+        <div class="team-info">
+        <span><i class="fas fa-users"></i> Team: G. Naveen Kumar, D.V.S. Girish, S. Nirupam Reddy</span>
+        <span><i class="fas fa-user-graduate"></i> Guide: Dr. S. Siva Nageshwarao</span>
+        <span><i class="fas fa-user-tie"></i> Mentor: D. Venkata Reddy</span>
+      </div>
+        <hr>
+        <nav>
+            <ul class="navbar">
+                <li><a href="{{ url_for('index') }}" class=""><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('about') }}" class=""><i class="fas fa-info-circle"></i> About Project</a></li>
+                <li><a href="{{ url_for('predict') }}" class=""><i class="fas fa-fire"></i> Prediction</a></li>
+                <li><a href="{{ url_for('metrics') }}" class="active"><i class="fas fa-chart-line"></i> Metrics</a></li>
+                <li><a href="{{ url_for('flowchart') }}" class=""><i class="fas fa-sitemap"></i> Flowchart</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="metrics-container">
+        <h2 style="text-align: center;">Model Evaluation Metrics</h2>
+
+        <h3>Performance Comparison of Base and Ensemble Models</h3>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+            </tr>
+            <tr><td>Random Forest</td><td>81.00%</td><td>0.75</td><td>0.68</td><td>0.71</td></tr>
+            <tr><td>Gradient Boosting</td><td>79.00%</td><td>0.72</td><td>0.66</td><td>0.69</td></tr>
+            <tr><td>Naive Bayes</td><td>74.00%</td><td>0.70</td><td>0.60</td><td>0.64</td></tr>
+            <tr><td>LightGBM</td><td>89.50%</td><td>0.78</td><td>0.70</td><td>0.73</td></tr>
+            <tr><td>XGBoost</td><td>90.20%</td><td>0.80</td><td>0.72</td><td>0.75</td></tr>
+            <tr><td><b>Stacked Ensemble (Proposed)</b></td><td><b>91.46%</b></td><td><b>0.91</b></td><td><b>0.69</b></td><td><b>0.80</b></td></tr>
+        </table>
+
+        <h3>Class-Wise Performance on Test Set</h3>
+        <table>
+            <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+                <th>Support</th>
+            </tr>
+            <tr><td>No Fire (0)</td><td>1.000</td><td>0.914</td><td>0.955</td><td>5,692,737</td></tr>
+            <tr><td>Fire (1)</td><td>0.004</td><td>0.690</td><td>0.008</td><td>3,000</td></tr>
+            <tr><td><b>Overall Accuracy</b></td><td colspan="4"><b>91.4%</b></td></tr>
+        </table>
+
+        <h3>Model Insights</h3>
+        <ul style="margin-left: 25px; line-height: 1.8;">
+            <li><b>Highest accuracy:</b> 91.46% achieved by the stacked ensemble model.</li>
+            <li><b>Recall (Fire Class):</b> 69%, ensuring most fire days are correctly predicted.</li>
+            <li><b>ROC AUC:</b> 0.87, indicating strong discriminative power.</li>
+            <li><b>NDVI Trends:</b> Fire activity peaks when NDVI dips, confirming vegetation dryness correlation.</li>
+            <li><b>Balanced sensitivity:</b> SMOTE technique reduced bias towards non-fire samples.</li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>

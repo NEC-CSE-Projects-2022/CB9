@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – NallaFireNet</title>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #4a6cf7;
+      --primary-light: #6a88f9;
+      --primary-dark: #3a56c7;
+      --secondary: #6c757d;
+      --accent: #0d6efd;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --transition: all 0.3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin: 2rem auto;
+      width: 95%;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .logo {
+      height: 90px;
+      width: 90px;
+      border-radius: 18px;
+      background: white;
+      padding: 5px;
+      margin-right: 20px;
+      object-fit: contain;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .team-info {
+      font-size: 1.05rem;
+      color: var(--secondary);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .team-info span { margin-right: 20px; }
+    .team-info span i { color: var(--primary); margin-right: 6px; }
+
+    hr {
+      border: 0;
+      border-top: 2px solid var(--primary);
+      width: 80%;
+      margin: 15px auto;
+      opacity: 0.3;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover {
+      background: rgba(74,108,247,0.1);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    nav a.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(74,108,247,0.3);
+    }
+
+    /* Main Container */
+    main {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      padding: 2.5rem;
+      width: 95%;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      color: #333;
+    }
+
+    .about-project {
+      flex: 2;
+      min-width: 60%;
+    }
+
+    .table-of-content {
+      flex: 1;
+      min-width: 280px;
+      background-color: rgba(74,108,247,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .animated-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.7rem;
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .animated-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      text-align: justify;
+      color: #444;
+      animation: fadeSlideIn 0.8s ease-out;
+    }
+
+    ol, ul { padding-left: 25px; margin-bottom: 20px; }
+    li { margin-bottom: 10px; }
+    b { color: var(--primary-dark); }
+
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-container { flex-direction: column; }
+      .project-title { font-size: 1.5rem; }
+      .animated-title { font-size: 1.4rem; }
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; }
+      .logo { margin-bottom: 15px; }
+      nav ul { flex-direction: column; gap: 10px; }
+      .team-info { display: flex; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="/static/images/logo.jpg" alt="Logo" class="logo">
+    <div class="header-content">
+            <div class="project-title">{{ title | default("A Machine Learning Framework for Forest Fire Prediction in the Nallamala Forest Using NDVI and Synthetic Weather Data") }}</div>
+      <div class="team-info">
+        <span><i class="fas fa-users"></i> Team: G. Naveen Kumar, D.V.S. Girish, S. Nirupam Reddy</span>
+        <span><i class="fas fa-user-graduate"></i> Guide: Dr. S. Siva Nageshwarao</span>
+        <span><i class="fas fa-user-tie"></i> Mentor: D. Venkata Reddy</span>
+      </div>
+      <hr>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="{{ url_for('about') }}" class="active"><i class="fas fa-info-circle"></i> About Project</a></li>
+          <li><a href="{{ url_for('predict') }}"><i class="fas fa-fire"></i> Prediction</a></li>
+          <li><a href="{{ url_for('metrics') }}"><i class="fas fa-chart-line"></i> Metrics</a></li>
+          <li><a href="{{ url_for('flowchart') }}"><i class="fas fa-sitemap"></i> Flowchart</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="about-container">
+      <div class="about-project">
+        <h1 class="animated-title">About the Project</h1>
+        <p class="animated-text">
+          <b>NallaFireNet</b> is an interpretable machine learning framework for 
+          <b>early forest fire prediction</b> in India’s Nallamala Forest. It integrates 
+          <b>remote sensing NDVI data</b> with <b>synthetic weather variables</b> from NASA POWER 
+          to forecast fire risk with high accuracy. By combining <b>LightGBM</b>, <b>XGBoost</b>, 
+          and <b>Random Forest</b> in a stacked ensemble, the system provides early alerts to support 
+          proactive forest management and ecological safety.
+        </p>
+
+        <h2 class="animated-title">Core Methodology</h2>
+        <ol class="animated-text">
+          <li>Data acquisition from MODIS NDVI and NASA POWER synthetic weather feeds (2012–2025).</li>
+          <li><b>Feature engineering</b> using temporal lags for temperature and humidity.</li>
+          <li><b>Preprocessing</b> with linear interpolation, normalization, and correlation analysis.</li>
+          <li><b>SMOTE balancing</b> to handle rare fire-day instances and improve recall.</li>
+          <li><b>Stacked ensemble modeling</b> using LightGBM, XGBoost, and Random Forest.</li>
+          <li><b>Evaluation</b> via Accuracy, Precision, Recall, F1-score, ROC, and visual analytics.</li>
+        </ol>
+
+        <h2 class="animated-title">Key Advantages</h2>
+        <ol class="animated-text">
+          <li>Achieves <b>91.8% accuracy</b> and <b>69% recall</b> for rare fire events.</li>
+          <li>Combines multi-source <b>satellite and weather data</b> for predictive strength.</li>
+          <li>Enhances interpretability via <b>feature importance and NDVI trend analysis</b>.</li>
+          <li>Provides <b>early warning capability</b> for proactive fire prevention.</li>
+          <li>Scalable to other wildfire-prone regions across India.</li>
+        </ol>
+      </div>
+
+      <div class="table-of-content">
+        <h2 class="animated-title">System Requirements</h2>
+        <div class="animated-text">
+          <ol>
+            <li><b>Hardware:</b>
+              <ul>
+                <li>Processor: Intel® Core™ i5 or higher</li>
+                <li>RAM: Minimum 8GB</li>
+                <li>Disk: 4GB+ free storage</li>
+              </ul>
+            </li>
+            <li><b>Software:</b>
+              <ul>
+                <li>OS: Windows 11 (64-bit) or Linux</li>
+                <li>Python 3 (Anaconda, Flask)</li>
+                <li>Libraries: PyTorch, Scikit-learn, LightGBM, XGBoost</li>
+                <li>Browser: Any modern browser (e.g., Chrome)</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
