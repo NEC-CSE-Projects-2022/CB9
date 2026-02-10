@@ -1,0 +1,15 @@
+{
+  "features": [
+    "NDVI",
+    "Temp",
+    "Humidity",
+    "Radiation",
+    "Wind",
+
+    "NDVI_lag1", "NDVI_lag2", "NDVI_lag3", "NDVI_lag4", "NDVI_lag5", "NDVI_lag6", "NDVI_lag7",
+    "Temp_lag1", "Temp_lag2", "Temp_lag3", "Temp_lag4", "Temp_lag5", "Temp_lag6", "Temp_lag7",
+    "Humidity_lag1", "Humidity_lag2", "Humidity_lag3", "Humidity_lag4", "Humidity_lag5", "Humidity_lag6", "Humidity_lag7",
+    "Radiation_lag1", "Radiation_lag2", "Radiation_lag3", "Radiation_lag4", "Radiation_lag5", "Radiation_lag6", "Radiation_lag7",
+    "Wind_lag1", "Wind_lag2", "Wind_lag3", "Wind_lag4", "Wind_lag5", "Wind_lag6", "Wind_lag7"
+  ]
+}
